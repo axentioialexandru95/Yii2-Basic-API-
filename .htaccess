@@ -1,0 +1,13 @@
+# prevent directory listing
+Options -Indexes
+IndexIgnore */*
+
+# follow symbolic links
+Options FollowSymLinks
+RewriteEngine on
+# without trailing slash
+RewriteRule ^admin(/.+)?$ backend/web/$1 [L,PT]
+# with trailing slash
+RewriteRule ^admin/(.+)?$ backend/web/$1 [L,PT]
+
+RewriteRule ^(.+)?$ frontend/web/$1
